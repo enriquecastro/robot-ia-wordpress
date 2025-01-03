@@ -1,0 +1,220 @@
+/* Estilos del chatbot */
+#wpai-chatbot {
+    width: var(--chat-width, 400px);
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: var(--chat-bg, #000000);
+    color: var(--chat-text, #00ff00);
+    font-family: var(--chat-font, 'Courier New', monospace);
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    text-align: center;
+}
+
+#chat-messages {
+    height: var(--chat-height, 400px);
+    overflow-y: auto;
+    padding: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--chat-text) var(--chat-bg);
+}
+
+#chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background: var(--chat-bg);
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background-color: var(--chat-text);
+    border-radius: 3px;
+}
+
+#chat-messages p {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-input-container {
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#user-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--chat-text);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--chat-text);
+    font-family: inherit;
+}
+
+#user-input::placeholder {
+    color: rgba(var(--chat-text), 0.5);
+}
+
+button.send-button {
+    padding: 8px 16px;
+    background: var(--chat-button, #008000);
+    color: var(--chat-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    min-width: 44px;
+    transition: opacity 0.2s;
+}
+
+button.send-button:hover {
+    opacity: 0.9;
+}
+
+.chat-footer {
+    padding: 5px 10px;
+    text-align: right;
+    font-size: 0.8em;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos del panel de administración */
+.wpai-chatbot-admin .nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.wpai-chatbot-admin .tab-content {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-top: none;
+}
+
+.wpai-chatbot-admin .form-table th {
+    width: 200px;
+}
+
+.wpai-chatbot-admin .color-preview {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Previsualización en vivo */
+.preview-container {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #wpai-chatbot {
+        width: 100% !important;
+        margin: 10px 0;
+    }
+    
+    .chat-input-container {
+        padding: 8px;
+    }
+    
+    #user-input {
+        font-size: 16px;
+    }
+    
+    button.send-button {
+        padding: 8px 12px;
+    }
+}
+
+/* Estilos para el modo oscuro del admin */
+@media (prefers-color-scheme: dark) {
+    .wpai-chatbot-admin .tab-content {
+        background: #1e1e1e;
+        border-color: #3c434a;
+    }
+    
+    .wpai-chatbot-admin input[type="text"],
+    .wpai-chatbot-admin textarea {
+        background: #2c3338;
+        color: #fff;
+        border-color: #3c434a;
+    }
+}
+
+/* Animaciones */
+@keyframes typing {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.typing-indicator {
+    animation: typing 1s infinite;
+}
+
+/* Estilos para los mensajes de error y éxito */
+.wpai-chatbot-error {
+    color: #dc3232;
+    padding: 8px;
+    border-radius: 4px;
+    background: rgba(220, 50, 50, 0.1);
+    margin: 5px 0;
+}
+
+.wpai-chatbot-success {
+    color: #46b450;
+    padding: 8px;
+    border-radius: 4px;
+    background: rgba(70, 180, 80, 0.1);
+    margin: 5px 0;
+}
+
+/* Tooltips */
+.wpai-tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: help;
+}
+
+.wpai-tooltip .wpai-tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.wpai-tooltip:hover .wpai-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
